@@ -1,6 +1,6 @@
 # scener-math
 
-[**scener**](http://github.com/carlosga/scener) math library (**C++ learning project**)
+[**scener**](http://gitlab.com/carlosga/scener) math library (**C++ learning project**)
 
 ## Getting Started
 
