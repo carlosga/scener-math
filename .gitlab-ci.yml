@@ -1,0 +1,29 @@
+image: ubuntu:17.04
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  before_script:
+    - apt-get update -y -qq
+    - apt-get install -y -qq git clang libc++1 libc++-dev libc++abi1 libc++abi-dev cmake
+  script:
+    - git submodule init
+    - git submodule update --remote --recursive
+    - mkdir build && cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+    - make
+
+test:
+  stage: test
+  before_script:
+    - apt-get update -y -qq
+    - apt-get install -y -qq git clang libc++1 libc++-dev libc++abi1 libc++abi-dev cmake
+  script:
+    - git submodule init
+    - git submodule update --remote --recursive
+    - mkdir build && cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+    - make && make test
