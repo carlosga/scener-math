@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone repository
 
 ```
-git clone --recursive https://github.com/carlosga/scener-math.git
+git clone --recursive https://gitlab.com/carlosga/tvml.git
 ```
 
 2. Install dependencies (packages names for Debian)
@@ -51,16 +51,14 @@ make test
 
 ## Built With
 
-| Library/Framework                                        | Description                         |
-|----------------------------------------------------------|-------------------------------------|
-| [**GSL**](https://github.com/Microsoft/GSL)              | Microsoft Guideline Support Library |
-| [**Google Test**](https://code.google.com/p/googletest/) | The test runner framework           |
+| Library/Framework                                       | Description                         |
+|---------------------------------------------------------|-------------------------------------|
+| [**GSL**](https://github.com/Microsoft/GSL)             | Microsoft Guideline Support Library |
+| [**Google Test**](https://github.com/google/googletest) | The test runner framework           |
 
 ## Authors
 
-* **Carlos Guzmán Álvarez** - *Initial work* - [carlosga](https://github.com/carlosga)
-
-See also the list of [contributors](https://github.com/carlosga/scener-math/contributors) who participated in this project.
+* **Carlos Guzmán Álvarez** - *Initial work* - [carlosga](https://gitlab.com/carlosga)
 
 ## License
 
