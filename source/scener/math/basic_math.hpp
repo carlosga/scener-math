@@ -11,31 +11,31 @@
 namespace scener::math 
 {
     /// Represents the mathematical constant e.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T e = T(M_E);
 
     /// Represents the log base ten of e.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T log_10E = T(M_LOG10E);
 
     /// Represents the log base two of e.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T log_2E = T(M_LOG2E);
 
     /// Represents the value of PI
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T pi = T(M_PI);
 
     /// Represents the value of PI divided by 2
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T pi_over_2 = T(M_PI_2);
 
     /// Represents the value of PI divided by 4
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T pi_over_4 = T(M_PI_4);
 
     /// Represents the value of pi times two.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T two_pi = T(M_2_PI);
 
     /// Represents positive infinity.
@@ -51,23 +51,22 @@ namespace scener::math
     constexpr T nan = std::numeric_limits<float>::quiet_NaN();
 
     /// Represents the smallest positive value that is greater than zero.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T epsilon = std::numeric_limits<T>::epsilon();
 
     /// Represents the smallest possible value of the underliying template type.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T min_value = std::numeric_limits<T>::lowest();
 
     /// Represents the largest possible value of the underliying template type.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T max_value = std::numeric_limits<T>::max();
 
     /// Equality comparision between two values.
     /// \param value1 the first value.
     /// \param value2 the second value.
     /// \returns true if both values are equal; false otherwise.
-    template <typename T, typename S, typename = std::enable_if_t<std::is_arithmetic<T>::value
-                                                            && std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = std::enable_if_t<std::is_arithmetic_v<T> && std::is_arithmetic_v<S>>>
     constexpr bool equal(T value1, S value2) noexcept
     {
         typedef typename std::common_type<T, S>::type common_t;
@@ -123,7 +122,7 @@ namespace scener::math
     /// \param y a divisor.
     /// \returns a number equal to x - (y Q), where Q is the quotient of x / y rounded to the nearest integer
     ///          (if x / y falls halfway between two integers, the even integer is returned).
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     inline T ieee_remainder(T x, T y) noexcept
     {
         // Reference: https://msdn.microsoft.com/es-es/library/system.math.ieeeremainder%28v=vs.110%29.aspx
@@ -141,7 +140,7 @@ namespace scener::math
     /// \param amount2 the normalized barycentric (areal) coordinate b3, equal to the weighting factor for vertex 3,
     ///                the coordinate of which is specified in value3.
     /// \returns the Cartesian coordinate.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T barycentric(T value1, T value2, T value3, T amount1, T amount2) noexcept
     {
         // Reference: http://msdn.microsoft.com/en-us/library/microsoft.xna.framework.Math.barycentric(v=xnagamestudio.40).aspx
@@ -160,7 +159,7 @@ namespace scener::math
     /// \param value4 the fourth position in the interpolation.
     /// \param amount weighting factor.
     /// \returns the interpolation result.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T catmull_rom(T value1, T value2, T value3, T value4, T amount) noexcept
     {
         // Reference: http://msdn.microsoft.com/en-us/library/windows/desktop/bb324331(v=vs.85).aspx
@@ -171,9 +170,9 @@ namespace scener::math
         const T s  = amount;
 
         return ((-s3      + 2      * s2 - s) * value1
-            + (  3      * s3 - 5 * s2 + 2) * value2
-            + ( -3      * s3 + 4 * s2 + s) * value3
-            + (s3 - s2) * value4) / 2;
+              + (  3      * s3 - 5 * s2 + 2) * value2
+              + ( -3      * s3 + 4 * s2 + s) * value3
+              + (s3 - s2) * value4) / 2;
     }
 
     /// Restricts a value to be within a specified range.
@@ -181,7 +180,7 @@ namespace scener::math
     /// \param min_ the min value.
     /// \param max_ the max value.
     /// \returns the clamped value.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T clamp(T value, T min_, T max_) noexcept
     {
         const T maxValue = ((max_ < min_) ? min_ : max_);
@@ -205,7 +204,7 @@ namespace scener::math
     /// \param tangent2 source tangent 2.
     /// \param amount weighting factor.
     /// \returns the interpolation result.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T hermite(T value1, T tangent1, T value2, T tangent2, T amount) noexcept
     {
         // Reference: http://cubic.org/docs/hermite.htm
@@ -221,9 +220,9 @@ namespace scener::math
         const T s2 = amount * amount;
 
         return ( 2 * s3 - 3 * s2 + 1)      * value1
-            + (-2 * s3 + 3 * s2)          * value2
-            + (s3      - 2 * s2 + amount) * tangent1
-            + (s3      - s2)              * tangent2;
+             + (-2 * s3 + 3 * s2)          * value2
+             + (s3      - 2 * s2 + amount) * tangent1
+             + (s3      - s2)              * tangent2;
     }
 
     /// Performs a linear interpolation between two values.
@@ -231,7 +230,7 @@ namespace scener::math
     /// \param value2 second values.
     /// \param amount value between 0 and 1 indicating the weight of value2.
     /// \returns the linear interpolation of the two values.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T lerp(T value1, T value2, T amount) noexcept
     {
         // Reference: http://msdn.microsoft.com/en-us/library/bb197812.aspx
@@ -243,7 +242,7 @@ namespace scener::math
     /// \param value2 second value
     /// \param amount weighting value.
     /// \returns the interpolation result.
-    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T smooth_step(T value1, T value2, T amount) noexcept
     {
         // Reference: http://msdn.microsoft.com/en-us/library/windows/desktop/microsoft.directx_sdk.geometric.xmvectorlerp(v=vs.85).aspx

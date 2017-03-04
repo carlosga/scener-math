@@ -12,14 +12,14 @@ namespace scener::math
     // TEMPLATES
 
     /// Class that represents a rotation in three dimensions.
-    template <typename T, typename = typename std::enable_if_t<std::is_floating_point<T>::value>>
+    template <typename T, typename = typename std::enable_if_t<std::is_floating_point_v<T>>>
     struct basic_quaternion
     {
-        using reference              = typename std::add_lvalue_reference<T>::type;
-        using const_reference        = typename std::add_lvalue_reference<typename std::add_const<T>::type>::type;
-        using value_type             = typename std::remove_reference<typename std::remove_cv<T>::type>::type;
-        using pointer                = typename std::add_pointer<T>::type;
-        using const_pointer          = typename std::add_pointer<typename std::add_const<T>::type>::type;
+        using reference              = typename std::add_lvalue_reference_t<T>;
+        using const_reference        = typename std::add_lvalue_reference_t<typename std::add_const_t<T>>;
+        using value_type             = typename std::remove_reference_t<typename std::remove_cv_t<T>>;
+        using pointer                = typename std::add_pointer_t<T>;
+        using const_pointer          = typename std::add_pointer_t<typename std::add_const_t<T>>;
         using iterator               = typename std::array<T, 4>::iterator;
         using const_iterator         = typename std::array<T, 4>::const_iterator;
         using reverse_iterator       = typename std::array<T, 4>::reverse_iterator;
@@ -237,7 +237,7 @@ namespace scener::math
     // ---------------------------------------------------------------------------------------------------------------------
     // OPERATORS (WITH SCALARS)
 
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T>& operator*=(basic_quaternion<T>& lhs, const S& rhs) noexcept
     {
         lhs.x *= rhs;
@@ -248,7 +248,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T> operator*(const basic_quaternion<T>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -258,7 +258,7 @@ namespace scener::math
         return result;
     }
 
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T>& operator/=(basic_quaternion<T>& lhs, const S& rhs) noexcept
     {
         lhs.x /= rhs;
@@ -269,7 +269,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T> operator/(const basic_quaternion<T>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;

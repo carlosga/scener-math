@@ -31,12 +31,12 @@ namespace scener::math
     // TEMPLATES
 
     /// Represents a generic angle.
-    template <typename T, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<T>>>
     struct basic_angle
     {
-        using value_type      = typename std::remove_reference<typename std::remove_cv<T>::type>::type;
-        using reference       = typename std::add_lvalue_reference<T>::type;
-        using const_reference = typename std::add_lvalue_reference<typename std::add_const<T>::type>::type;
+        using value_type      = typename std::remove_reference_t<typename std::remove_cv_t<T>>;
+        using reference       = typename std::add_lvalue_reference_t<T>;
+        using const_reference = typename std::add_lvalue_reference_t<typename std::add_const_t<T>>;
 
     public:
         /// Initializes a new basic_angle instance.
@@ -75,7 +75,7 @@ namespace scener::math
     /// Equality operator for comparing basic_angle instances.
     template <typename T, typename Unit>
     constexpr bool operator==(const basic_angle<T, Unit>& lhs
-                            , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                            , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
 
     {
         return equal(lhs.value, rhs.value);
@@ -84,7 +84,7 @@ namespace scener::math
     /// Inequality operator for comparing basic_angle instances.
     template <typename T, typename Unit>
     constexpr bool operator!=(const basic_angle<T, Unit>& lhs
-                            , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                            , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         return !(lhs == rhs);
     }
@@ -143,7 +143,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit>& operator*=(basic_angle<T, Unit>& lhs
-                                             , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                             , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         lhs.value *= rhs.value;
 
@@ -152,7 +152,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit> operator*(const basic_angle<T, Unit>& lhs
-                                           , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                           , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         auto result = lhs;
 
@@ -162,7 +162,7 @@ namespace scener::math
     }
 
     template <typename T, typename K, typename Unit>
-    constexpr basic_angle<typename std::common_type<T, K>::type, Unit>&
+    constexpr basic_angle<typename std::common_type_t<T, K>, Unit>&
         operator/=(basic_angle<T, Unit>& lhs, const basic_angle<K, Unit>& rhs) noexcept
     {
         lhs.value /= static_cast<T>(rhs.value);
@@ -171,7 +171,7 @@ namespace scener::math
     }
 
     template <typename T, typename K, typename Unit>
-    constexpr basic_angle<typename std::common_type<T, K>::type, Unit>
+    constexpr basic_angle<typename std::common_type_t<T, K>, Unit> 
         operator/(const basic_angle<T, Unit>& lhs, const basic_angle<K, Unit>& rhs) noexcept
     {
         typedef typename std::common_type<T, K>::type common_t;
@@ -185,7 +185,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit>& operator-=(basic_angle<T, Unit>& lhs
-                                             , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                             , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         lhs.value -= rhs.value;
 
@@ -194,7 +194,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit> operator-(const basic_angle<T, Unit>& lhs
-                                           , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                           , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         auto result = lhs;
 
@@ -205,7 +205,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit>& operator+=(basic_angle<T, Unit>& lhs
-                                             , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                             , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         lhs.value += rhs.value;
 
@@ -214,7 +214,7 @@ namespace scener::math
 
     template <typename T, typename Unit>
     constexpr basic_angle<T, Unit> operator+(const basic_angle<T, Unit>& lhs
-                                           , const typename std::common_type<basic_angle<T, Unit>>::type& rhs) noexcept
+                                           , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
     {
         auto result = lhs;
 
@@ -233,82 +233,82 @@ namespace scener::math
     // OPERATORS (WITH SCALARS)
 
     /// Equality operator for comparing basic_angle instances against scalar values.
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator==(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return equal(lhs.value, rhs);
     }
 
     /// Inequality operator for comparing basic_angle instances against scalar values.
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator!=(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return !(lhs == rhs);
     }
 
     /// Equality operator for comparing scalar values against basic_angle instances.
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator==(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return equal(lhs, rhs.value);
     }
 
     /// Inequality operator for comparing scalar values against basic_angle instances.
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator!=(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return !(lhs == rhs);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator<(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return (lhs.value < rhs);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator<=(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return (lhs.value <= rhs);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator>(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return (lhs.value > rhs);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator>=(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         return (lhs.value >= rhs);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator<(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return (lhs < rhs.value);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator<=(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return (lhs <= rhs.value);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator>(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return (lhs > rhs.value);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr bool operator>=(const S& lhs, const basic_angle<T, Unit>& rhs) noexcept
     {
         return (lhs >= rhs.value);
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit>& operator*=(basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         lhs.value *= rhs;
@@ -316,7 +316,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit> operator*(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -326,7 +326,7 @@ namespace scener::math
         return result;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit>& operator/=(basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         lhs.value /= rhs;
@@ -334,7 +334,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit> operator/(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -344,7 +344,7 @@ namespace scener::math
         return result;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit>& operator-=(basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         lhs.value -= rhs;
@@ -352,7 +352,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit> operator-(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -362,7 +362,7 @@ namespace scener::math
         return result;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit>& operator+=(basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         lhs.value += rhs;
@@ -370,7 +370,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename Unit, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_angle<T, Unit> operator+(const basic_angle<T, Unit>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -380,19 +380,24 @@ namespace scener::math
         return result;
     }
 
-    constexpr degrees operator"" _deg(unsigned long long value) noexcept
-    {
-        return degrees(value);
-    }
-
-    constexpr degrees operator"" _deg(long double value) noexcept
+    constexpr degrees operator""_deg(unsigned long long value) noexcept
     {
         return degrees(static_cast<degrees::value_type>(value));
     }
 
-    constexpr radians operator"" _rad(long double value) noexcept
+    constexpr degrees operator""_deg(long double value) noexcept
     {
-        return radians(static_cast<degrees::value_type>(value));
+        return degrees(static_cast<degrees::value_type>(value));
+    }
+
+    constexpr radians operator""_rad(unsigned long long value) noexcept
+    {
+        return radians(static_cast<radians::value_type>(value));
+    }
+
+    constexpr radians operator""_rad(long double value) noexcept
+    {
+        return radians(static_cast<radians::value_type>(value));
     }
 }
 

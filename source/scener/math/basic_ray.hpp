@@ -12,7 +12,7 @@ namespace scener::math
     // TEMPLATES
 
     /// Defines a ray.
-    template <typename T, typename = std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     struct basic_ray
     {
     public:

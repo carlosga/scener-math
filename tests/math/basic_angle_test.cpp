@@ -179,15 +179,18 @@ TEST_F(basic_angle_test, less_than_scalar)
 
 TEST_F(basic_angle_test, less_than_or_equal_than_scalar)
 {
-    float   min {  5.0f };
-    degrees max { 10.0f };
+    {
+        float   min {  5.0f };
+        degrees max { 10.0f };
 
-    EXPECT_TRUE(min <= max);
+        EXPECT_TRUE(min <= max);
+    }
+    {
+        float   min { 10.0f };
+        degrees max { 10.0f };
 
-    float   min1 { 10.0f };
-    degrees max1 { 10.0f };
-
-    EXPECT_TRUE(min1 <= max1);
+        EXPECT_TRUE(min <= max);
+    }
 }
 
 TEST_F(basic_angle_test, greater_than_scalar)
@@ -200,15 +203,18 @@ TEST_F(basic_angle_test, greater_than_scalar)
 
 TEST_F(basic_angle_test, greater_than_or_equal_than_scalar)
 {
-    float   min { 1.0f };
-    degrees max { 5.0f };
+    {
+        float   min { 1.0f };
+        degrees max { 5.0f };
 
-    EXPECT_TRUE(max >= min);
+        EXPECT_TRUE(max >= min);
+    }
+    {
+        float   min { 10.0f };
+        degrees max { 10.0f };
 
-    float   min1 { 10.0f };
-    degrees max1 { 10.0f };
-
-    EXPECT_TRUE(max1 >= min1);
+        EXPECT_TRUE(max >= min);
+    }
 }
 
 TEST_F(basic_angle_test, less_than)
@@ -221,15 +227,18 @@ TEST_F(basic_angle_test, less_than)
 
 TEST_F(basic_angle_test, less_than_or_equal)
 {
-    degrees min {  5.0f };
-    degrees max { 10.0f };
+    {
+        degrees min {  5.0f };
+        degrees max { 10.0f };
 
-    EXPECT_TRUE(min <= max);
+        EXPECT_TRUE(min <= max);
+    }
+    {
+        degrees min { 10.0f };
+        degrees max { 10.0f };
 
-    degrees min1 { 10.0f };
-    degrees max1 { 10.0f };
-
-    EXPECT_TRUE(min1 <= max1);
+        EXPECT_TRUE(min <= max);
+    }
 }
 
 TEST_F(basic_angle_test, greater_than)
@@ -242,15 +251,18 @@ TEST_F(basic_angle_test, greater_than)
 
 TEST_F(basic_angle_test, greater_than_or_equal)
 {
-    degrees min { 1.0f };
-    degrees max { 5.0f };
+    {
+        degrees min { 1.0f };
+        degrees max { 5.0f };
 
-    EXPECT_TRUE(max >= min);
+        EXPECT_TRUE(max >= min);
+    }
+    {
+        degrees min { 10.0f };
+        degrees max { 10.0f };
 
-    degrees min1 { 10.0f };
-    degrees max1 { 10.0f };
-
-    EXPECT_TRUE(max1 >= min1);
+        EXPECT_TRUE(max >= min);
+    }
 }
 
 TEST_F(basic_angle_test, degrees_literal_operator)
@@ -269,6 +281,20 @@ TEST_F(basic_angle_test, radians_literal_operator)
     auto rad = 3.1415927400000001_rad;
 
     EXPECT_EQ(3.1415927400000001f, rad);
+}
+
+TEST_F(basic_angle_test, literal_conversion)
+{
+    {
+        radians angle = 45_deg;
+
+        EXPECT_EQ(0.7853981634f, angle);
+    }
+    {
+        degrees angle = 0.7853981634_rad;
+
+        EXPECT_EQ(45, angle);
+    }
 }
 
 TEST_F(basic_angle_test, increment)

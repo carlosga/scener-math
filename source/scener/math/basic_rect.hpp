@@ -15,7 +15,7 @@ namespace scener::math
     // -----------------------------------------------------------------------------------------------------------------
     // TEMPLATES
 
-    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic_v<T>>>
     class basic_rect final
     {
     public:

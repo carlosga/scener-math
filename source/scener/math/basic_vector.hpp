@@ -20,11 +20,11 @@ namespace scener::math
     template <typename T, std::size_t Dimension>
     struct basic_vector_traits
     {
-        using reference              = typename std::add_lvalue_reference<T>::type;
-        using const_reference        = typename std::add_lvalue_reference<typename std::add_const<T>::type>::type;
-        using value_type             = typename std::remove_reference<typename std::remove_cv<T>::type>::type;
-        using pointer                = typename std::add_pointer<T>::type;
-        using const_pointer          = typename std::add_pointer<typename std::add_const<T>::type>::type;
+        using reference              = typename std::add_lvalue_reference_t<T>;
+        using const_reference        = typename std::add_lvalue_reference_t<typename std::add_const_t<T>>;
+        using value_type             = typename std::remove_reference_t<typename std::remove_cv_t<T>>;
+        using pointer                = typename std::add_pointer_t<T>;
+        using const_pointer          = typename std::add_pointer_t<typename std::add_const_t<T>>;
         using iterator               = typename std::array<T, Dimension>::iterator;
         using const_iterator         = typename std::array<T, Dimension>::const_iterator;
         using reverse_iterator       = typename std::array<T, Dimension>::reverse_iterator;
@@ -36,7 +36,7 @@ namespace scener::math
     // TEMPLATES
 
     /// Represents a generic vector.
-    template <typename T, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<T>>>
     struct basic_vector
     {
         using traits_type            = basic_vector_traits<T, Dimension>;
@@ -931,7 +931,7 @@ namespace scener::math
     // OPERATORS (WITH SCALARS)
 
     /// Multiplication assignment operator for multipliying basic_vector instances against an scalar value.
-    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension>& operator*=(basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
         std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<float>(), rhs));
@@ -940,7 +940,7 @@ namespace scener::math
     }
 
     /// Multiplication operator for multipliying basic_vector instances against an scalar value.
-    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> operator*(const basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
         auto result = lhs;
@@ -951,13 +951,13 @@ namespace scener::math
     }
 
     /// Multiplication operator for multipliying basic_vector instances against an scalar value.
-    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> operator*(const S& lhs, const basic_vector<T, Dimension>& rhs) noexcept
     {
         return rhs * lhs;
     }
 
-    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension>& operator/=(basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
         std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::divides<float>(), rhs));
@@ -965,7 +965,7 @@ namespace scener::math
         return lhs;
     }
 
-    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> operator/(const basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
         auto vector = lhs;

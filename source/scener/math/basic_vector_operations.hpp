@@ -34,7 +34,7 @@ namespace scener::math::vector
     /// \param amount2 the normalized barycentric (areal) coordinate b3, equal to the weighting factor for vertex 3,
     ///                the coordinate of which is specified in value3.
     /// \returns the cartesian coordinate.
-    template <typename T = float, std::size_t Dimension, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, std::size_t Dimension, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> barycentric(const basic_vector<T, Dimension>& value1
                                                    , const basic_vector<T, Dimension>& value2
                                                    , const basic_vector<T, Dimension>& value3
@@ -58,7 +58,7 @@ namespace scener::math::vector
     /// \param value4 the fourth position in the interpolation.
     /// \param amount weighting factor.
     /// \returns the interpolation result.
-    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> catmull_rom(const basic_vector<T, Dimension>& value1
                                                    , const basic_vector<T, Dimension>& value2
                                                    , const basic_vector<T, Dimension>& value3
@@ -118,7 +118,7 @@ namespace scener::math::vector
     /// \param tangent2 source tangent 2.
     /// \param amount weighting factor.
     /// \returns the interpolation result.
-    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> hermite(const basic_vector<T, Dimension>& value1
                                                , const basic_vector<T, Dimension>& tangent1
                                                , const basic_vector<T, Dimension>& value2
@@ -140,7 +140,7 @@ namespace scener::math::vector
     /// \param value2 second vector.
     /// \param amount value between 0 and 1 indicating the weight of value2.
     /// \returns the linear interpolation of the two vectors.
-    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> lerp(const basic_vector<T, Dimension>& value1
                                             , const basic_vector<T, Dimension>& value2
                                             , S                                 amount) noexcept
@@ -214,7 +214,7 @@ namespace scener::math::vector
     /// \param value2 second vector
     /// \param amount weighting value.
     /// \returns the linear interpolation of the two vectors.
-    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension> smooth_step(const basic_vector<T, Dimension>& value1
                                                    , const basic_vector<T, Dimension>& value2
                                                    , S                                 amount) noexcept

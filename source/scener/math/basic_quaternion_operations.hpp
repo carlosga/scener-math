@@ -65,9 +65,9 @@ namespace scener::math::quat
         auto rSin  = std::sin(rads);
 
         return { axisOfRotation.x * rSin
-            , axisOfRotation.y * rSin
-            , axisOfRotation.z * rSin
-            ,           std::cos(rads) };
+               , axisOfRotation.y * rSin
+               , axisOfRotation.z * rSin
+               , std::cos(rads) };
     }
 
     /// Creates a Quaternion from a rotation Matrix.
@@ -198,7 +198,7 @@ namespace scener::math::quat
     /// \param quaternion2 second quaternion
     /// \param amount Value indicating how far to interpolate between the quaternions.
     /// \returns the result of the interpolation.
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T> lerp(const basic_quaternion<T>& quaternion1
                                      , const basic_quaternion<T>& quaternion2
                                      , S                          amount) noexcept
@@ -219,7 +219,7 @@ namespace scener::math::quat
     /// \param quaternion2 second quaternion
     /// \param amount Value indicating how far to interpolate between the quaternions.
     /// \returns the result of the interpolation.
-    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T, typename S, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_quaternion<T> slerp(const basic_quaternion<T>& quaternion1
                                       , const basic_quaternion<T>& quaternion2
                                       , S                          amount) noexcept

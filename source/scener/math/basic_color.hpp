@@ -12,7 +12,7 @@ namespace scener::math
     // TEMPLATES
 
     /// Describes a color in terms of red, green, blue and alpha components.
-    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic_v<T>>>
     struct basic_color
     {
     public:
@@ -103,9 +103,9 @@ namespace scener::math
     constexpr bool operator==(const basic_color<T>& lhs, const basic_color<T>& rhs) noexcept
     {
         return (math::equal(lhs.r, rhs.r)
-            && math::equal(lhs.g, rhs.g)
-            && math::equal(lhs.b, rhs.b)
-            && math::equal(lhs.a, rhs.a));
+             && math::equal(lhs.g, rhs.g)
+             && math::equal(lhs.b, rhs.b)
+             && math::equal(lhs.a, rhs.a));
     }
 
     template <typename T>

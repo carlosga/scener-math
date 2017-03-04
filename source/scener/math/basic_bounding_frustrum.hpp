@@ -14,7 +14,7 @@ namespace scener::math
     // TEMPLATES
 
     /// Defines a frustum and helps determine whether forms intersect with it.
-    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic<T>::value>>
+    template <typename T, typename = typename std::enable_if_t<std::is_arithmetic_v<T>>>
     class basic_bounding_frustrum final
     {
     public:

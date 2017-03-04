@@ -300,7 +300,7 @@ namespace scener::math::matrix
     /// \param value2 second matrix.
     /// \param amount value between 0 and 1 indicating the weight of value2.
     /// \returns the linear interpolation of the two matrices.
-    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic<S>::value>>
+    template <typename T = float, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_matrix<T, Dimension> lerp(const basic_matrix<T, Dimension>& value1
                                             , const basic_matrix<T, Dimension>& value2
                                             , S                                 amount) noexcept
