@@ -4,6 +4,7 @@
 #ifndef SCENER_MATH_BASIC_MATH_HPP
 #define SCENER_MATH_BASIC_MATH_HPP
 
+#include <algorithm>
 #include <cmath>
 #include <limits>
 #include <type_traits>
@@ -183,18 +184,9 @@ namespace scener::math
     template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
     constexpr T clamp(T value, T min_, T max_) noexcept
     {
-        const T maxValue = ((max_ < min_) ? min_ : max_);
+        const T max_value = ((max_ < min_) ? min_ : max_);
 
-        if (value < min_)
-        {
-            return min_;
-        }
-        else if (value > maxValue)
-        {
-            return maxValue;
-        }
-
-        return value;
+        return ((value < min_) ? min_ : ((value > max_value) ? max_value : value));
     }
 
     /// Calculates a hermite spline interpolation.

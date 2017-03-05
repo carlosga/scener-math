@@ -934,7 +934,7 @@ namespace scener::math
     template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension>& operator*=(basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
-        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<float>(), rhs));
+        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<T>(), rhs));
 
         return lhs;
     }
@@ -960,7 +960,7 @@ namespace scener::math
     template <typename T, typename S, std::size_t Dimension, typename = typename std::enable_if_t<std::is_arithmetic_v<S>>>
     constexpr basic_vector<T, Dimension>& operator/=(basic_vector<T, Dimension>& lhs, const S& rhs) noexcept
     {
-        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::divides<float>(), rhs));
+        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::divides<T>(), rhs));
 
         return lhs;
     }

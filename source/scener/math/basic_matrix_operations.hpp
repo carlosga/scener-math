@@ -265,11 +265,11 @@ namespace scener::math::matrix
         auto row2 = vector::normalize(v2);
         auto row3 = vector::normalize(v3);
 
-        basic_matrix4<T> nRotation { row1.x, row1.y, row1.z
+        basic_matrix4<T> nrotation { row1.x, row1.y, row1.z
                                    , row2.x, row2.y, row2.z
                                    , row3.x, row3.y, row3.z };
 
-        rotation = quat::create_from_rotation_matrix(nRotation);
+        rotation = quat::create_from_rotation_matrix(nrotation);
 
         // Special consideration: if there's a single negative scale
         // (all other combinations of negative scales will
@@ -277,7 +277,7 @@ namespace scener::math::matrix
         // normalized rotation matrix will be < 0.
         // If this is the case we apply an arbitrary negative to one
         // of the component of the scale.
-        auto det = determinant(nRotation);
+        auto det = determinant(nrotation);
 
         if (det < T(0))
         {

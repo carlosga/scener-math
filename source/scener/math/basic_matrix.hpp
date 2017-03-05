@@ -286,13 +286,13 @@ namespace scener::math
         /// Returns a pointer to the matrix data.
         constexpr pointer data() noexcept
         {
-            return &items[0][0];
+            return items.data();
         }
 
         /// Returns a const pointer to the matrix data.
         constexpr const_pointer data() const noexcept
         {
-            return &items[0][0];
+            return items.data();
         }
 
         /// Returns an iterator to the first element of the vector.
@@ -399,7 +399,6 @@ namespace scener::math
         template <typename K, size_type Dimension2>
         constexpr operator basic_matrix<K, Dimension2>() const noexcept
         {
-            static_assert(Dimension2 <= 4, "Invalid dimensions on matrix conversion");
             static_assert(Dimension2 <= 4, "Invalid dimensions on matrix conversion");
 
             // Algorithm: http://www.j3d.org/matrix_faq/matrfaq_latest.html#Q24

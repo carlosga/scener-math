@@ -6,6 +6,7 @@
 
 #include <numeric>
 
+#include "scener/math/basic_math_functional.hpp"
 #include "scener/math/basic_vector.hpp"
 #include "scener/math/basic_angle.hpp"
 
@@ -19,7 +20,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value.begin(), value.end(), vector.begin(), [](T v) -> T { return std::abs(v); });
+        std::transform(value.begin(), value.end(), vector.begin(), math::functional::abs<T>());
 
         return vector;
     }
@@ -163,9 +164,8 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [](T a, T b) -> T { return std::min(a, b); });
-
+        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), math::functional::min<T>());
+        
         return vector;
     }
 
@@ -179,8 +179,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [](T a, T b) -> T { return std::max(a, b); });
+        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), math::functional::max<T>());
 
         return vector;
     }
@@ -222,7 +221,7 @@ namespace scener::math::vector
         basic_vector<T, Dimension> vector;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [&amount](T a, T b) -> T { return math::smooth_step(a, b, T(amount)); });
+                     , [&amount](T a, T b) -> T { return math::smooth_step(a, b, amount); });
 
         return vector;
     }
@@ -235,7 +234,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value.begin(), value.end(), vector.begin(), [](T v) -> T { return std::sqrt(v); });
+        std::transform(value.begin(), value.end(), vector.begin(), math::functional::sqrt<T>());
 
         return vector;
     }
