@@ -148,7 +148,7 @@ namespace scener::math::vector
         basic_vector<T, Dimension> vector;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [&amount](T a, T b) -> T { return math::lerp(a, b, T(amount)); });
+                     , [&amount](T a, T b) -> T { return math::lerp(a, b, amount); });
 
         return vector;
     }

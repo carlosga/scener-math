@@ -307,10 +307,8 @@ namespace scener::math::matrix
     {
         basic_matrix<T, Dimension> result;
 
-        for (std::size_t i = 0; i < Dimension; ++i)
-        {
-            result[i] = vector::lerp(value1[i], value2[i], amount);
-        }
+        std::transform(value1.begin(), value1.end(), value2.begin(), result.begin()
+                     , [&amount](T a, T b) -> T { return math::lerp(a, b, amount); });
 
         return result;
     }

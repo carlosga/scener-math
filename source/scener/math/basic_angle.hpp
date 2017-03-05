@@ -382,22 +382,22 @@ namespace scener::math
 
     constexpr degrees operator""_deg(unsigned long long value) noexcept
     {
-        return degrees(static_cast<degrees::value_type>(value));
+        return { static_cast<degrees::value_type>(value) };
     }
 
     constexpr degrees operator""_deg(long double value) noexcept
     {
-        return degrees(static_cast<degrees::value_type>(value));
+        return { static_cast<degrees::value_type>(value) };
     }
 
     constexpr radians operator""_rad(unsigned long long value) noexcept
     {
-        return radians(static_cast<radians::value_type>(value));
+        return { static_cast<radians::value_type>(value) };
     }
 
     constexpr radians operator""_rad(long double value) noexcept
     {
-        return radians(static_cast<radians::value_type>(value));
+        return { static_cast<radians::value_type>(value) };
     }
 }
 

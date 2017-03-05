@@ -11,8 +11,8 @@ These instructions will get you a copy of the project up and running on your loc
 | Name                                     | Version |
 |------------------------------------------|---------|
 | [**CMake**](https://cmake.org/)          |         |
-| [**Clang**](http://clang.llvm.org/)      | 3.9     |
-| [**libC++**](http://libcxx.llvm.org/)    | 3.9     |
+| [**Clang**](http://clang.llvm.org/)      | 4.0     |
+| [**libC++**](http://libcxx.llvm.org/)    | 4.0     |
 
 ### Compile from Source
 

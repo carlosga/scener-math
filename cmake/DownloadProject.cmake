@@ -1,4 +1,5 @@
 # ==========================================================================================
+# http://crascit.com/2015/07/25/cmake-gtest/
 # https://github.com/Crascit/DownloadProject
 # ==========================================================================================
 # MODULE:   DownloadProject
@@ -68,50 +69,52 @@
 #
 #========================================================================================
 
-set(_DownloadProjectDir "${CMAKE_CURRENT_LIST_DIR}")
+set (_DownloadProjectDir "${CMAKE_CURRENT_LIST_DIR}")
 
-include(CMakeParseArguments)
+include (CMakeParseArguments)
 
-function(download_project)
+function (download_project)
 
-    set(options QUIET)
-    set(oneValueArgs
-        PROJ
-        SOURCE_DIR
-        BINARY_DIR
-        # Prevent the following from being passed through
-        CONFIGURE_COMMAND
-        BUILD_COMMAND
-        INSTALL_COMMAND
-        TEST_COMMAND
-    )
-    set(multiValueArgs "")
+    set (options QUIET)
+    set (oneValueArgs
+         PROJ
+         SOURCE_DIR
+         BINARY_DIR
+         # Prevent the following from being passed through
+         CMAKE_ARGS
+         CONFIGURE_COMMAND
+         BUILD_COMMAND
+         INSTALL_COMMAND
+         TEST_COMMAND)
 
-    cmake_parse_arguments(DL_ARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+    set (multiValueArgs "")
+
+    cmake_parse_arguments (DL_ARGS "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     # Hide output if requested
     if (DL_ARGS_QUIET)
-        set(OUTPUT_QUIET "OUTPUT_QUIET")
+        set (OUTPUT_QUIET "OUTPUT_QUIET")
     else()
-        unset(OUTPUT_QUIET)
-        message(STATUS "Downloading/updating ${DL_ARGS_PROJ}")
+        unset (OUTPUT_QUIET)
+        message (STATUS "Downloading/updating ${DL_ARGS_PROJ}")
     endif()
 
     # Ensure the caller can know where to find the source and build directories
     if (NOT DL_ARGS_SOURCE_DIR)
-        set(DL_ARGS_SOURCE_DIR "${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-src")
+        set (DL_ARGS_SOURCE_DIR "${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-src")
     endif()
     if (NOT DL_ARGS_BINARY_DIR)
-        set(DL_ARGS_BINARY_DIR "${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-build")
+        set (DL_ARGS_BINARY_DIR "${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-build")
     endif()
-    set(${DL_ARGS_PROJ}_SOURCE_DIR "${DL_ARGS_SOURCE_DIR}" PARENT_SCOPE)
-    set(${DL_ARGS_PROJ}_BINARY_DIR "${DL_ARGS_BINARY_DIR}" PARENT_SCOPE)
+    set (${DL_ARGS_PROJ}_SOURCE_DIR "${DL_ARGS_SOURCE_DIR}" PARENT_SCOPE)
+    set (${DL_ARGS_PROJ}_BINARY_DIR "${DL_ARGS_BINARY_DIR}" PARENT_SCOPE)
+    set (${DL_CMAKE_ARGS}           "${DL_CMAKE_ARGS}"      PARENT_SCOPE)
 
     # Create and build a separate CMake project to carry out the download.
     # If we've already previously done these steps, they will not cause
     # anything to be updated, so extra rebuilds of the project won't occur.
-    configure_file("${_DownloadProjectDir}/DownloadProject.CMakeLists.cmake.in"
-                   ${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-download/CMakeLists.txt)
+    configure_file ("${_DownloadProjectDir}/DownloadProject.CMakeLists.cmake.in"
+                    ${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-download/CMakeLists.txt)
     execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
                     ${OUTPUT_QUIET}
                     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/${DL_ARGS_PROJ}-download")

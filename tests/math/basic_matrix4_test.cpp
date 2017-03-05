@@ -36,7 +36,7 @@ matrix4 basic_matrix4_test::generate_matrix_number_from_1_to_16()
 
 matrix4 basic_matrix4_test::generate_test_matrix()
 {
-    radians a = degrees(30.0f);
+    auto a = radians(30_deg);
     auto m = matrix::create_rotation_x(a)
            * matrix::create_rotation_y(a)
            * matrix::create_rotation_z(a);
@@ -318,10 +318,10 @@ TEST_F(basic_matrix4_test, identity)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_matrix4_test, determinant1)
 {
-    auto angle  = degrees(30.0f);
-    auto target = matrix::create_rotation_x(static_cast<radians>(angle))
-                * matrix::create_rotation_y(static_cast<radians>(angle))
-                * matrix::create_rotation_z(static_cast<radians>(angle));
+    auto angle  = radians(30_deg);
+    auto target = matrix::create_rotation_x(angle)
+                * matrix::create_rotation_y(angle)
+                * matrix::create_rotation_z(angle);
 
     auto val = 1.0f;
     auto det = matrix::determinant(target);
@@ -458,9 +458,9 @@ TEST_F(basic_matrix4_test, invert_affine_matrix)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_matrix4_test, decompose)
 {
-    auto yaw   = degrees { 10.0f };
-    auto pitch = degrees { 20.0f };
-    auto roll  = degrees { 30.0f };
+    auto yaw   = 10_deg;
+    auto pitch = 20_deg;
+    auto roll  = 30_deg;
 
     basic_matrix4_test::decompose(yaw, pitch, roll, { 10.0f, 20.0f, 30.0f }, { 2.0f, 3.0f, 4.0f });
 

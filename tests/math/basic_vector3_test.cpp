@@ -703,7 +703,7 @@ TEST_F(basic_vector3_test, clamp)
 TEST_F(basic_vector3_test, transform_normal1)
 {
     auto v = vector3 { 1.0f, 2.0f, 3.0f };
-    auto a = static_cast<radians>(degrees { 30.0f });
+    auto a = radians(30_deg);
     auto m = matrix::create_rotation_x(a)
            * matrix::create_rotation_y(a)
            * matrix::create_rotation_z(a);
@@ -723,7 +723,7 @@ TEST_F(basic_vector3_test, transform_normal1)
 TEST_F(basic_vector3_test, transform_by_quaternion)
 {
     auto v = vector3 { 1.0f, 2.0f, 3.0f };
-    auto a = static_cast<radians>(degrees { 30.0f });
+    auto a = radians(30_deg);
     auto m = matrix::create_rotation_x(a)
            * matrix::create_rotation_y(a)
            * matrix::create_rotation_z(a);
