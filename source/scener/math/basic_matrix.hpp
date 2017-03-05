@@ -72,13 +72,13 @@ namespace scener::math
         /// Returns a pointer to the matrix data.
         constexpr pointer data() noexcept
         {
-            return items.data();
+            return &items[0][0];
         }
 
         /// Returns a const pointer to the matrix data.
         constexpr const_pointer data() const noexcept
         {
-            return items.data();
+            return &items[0][0];
         }
 
         /// Returns an iterator to the first element of the vector.
