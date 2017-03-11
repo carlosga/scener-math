@@ -50,11 +50,11 @@ namespace scener::math::quat
     }
 
     /// Creates a quaternion from a vector and an angle to rotate about the vector.
-    /// \param axisOfRotation Vector3 that represents the axis of rotation.
+    /// \param axis_of_rotation Vector3 that represents the axis of rotation.
     /// \param angle Angle to rotate around the specified axis, in radians.
     /// \returns the created Quaternion.
     template <typename T = float>
-    constexpr basic_quaternion<T> create_from_axis_angle(const basic_vector3<T>& axisOfRotation
+    constexpr basic_quaternion<T> create_from_axis_angle(const basic_vector3<T>& axis_of_rotation
                                                        , const basic_radians<T>& angle) noexcept
     {
         // The quaternion in terms of axis-angle is:
@@ -64,9 +64,9 @@ namespace scener::math::quat
         auto rads  = theta.value;
         auto rSin  = std::sin(rads);
 
-        return { axisOfRotation.x * rSin
-               , axisOfRotation.y * rSin
-               , axisOfRotation.z * rSin
+        return { axis_of_rotation.x * rSin
+               , axis_of_rotation.y * rSin
+               , axis_of_rotation.z * rSin
                , std::cos(rads) };
     }
 

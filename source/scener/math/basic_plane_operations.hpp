@@ -75,9 +75,9 @@ namespace scener::math::plane
     template <typename T = float>
     constexpr basic_plane<T> normalize(const basic_plane<T>& value) noexcept
     {
-        auto reciprocalLength = T(1) / vector::length(value.normal);
+        auto reciprocal_length = T(1) / vector::length(value.normal);
 
-        return { value.normal * reciprocalLength, value.d * reciprocalLength };
+        return { value.normal * reciprocal_length, value.d * reciprocal_length };
     }
 
     //template <typename T>
