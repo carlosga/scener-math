@@ -26,4 +26,4 @@ test:
     - git submodule update --remote --recursive
     - mkdir build && cd build
     - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-    - make && cd build/Debug && ./test-runner
+    - make && cd Debug && ./test-runner
