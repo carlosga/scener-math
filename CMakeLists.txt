@@ -32,22 +32,6 @@ if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
 endif ()
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  # Workaround using a local build of libc++ & libc++abi under ubuntu 16.04
-  ## c++abi
-  if (CMAKE_LIBCXXABI_INCLUDE_PATH)
-    include_directories (${CMAKE_LIBCXXABI_INCLUDE_PATH})
-  endif ()
-  if (CMAKE_LIBCXXABI_LIB_PATH)
-    link_directories (${CMAKE_LIBCXXABI_LIB_PATH})
-  endif ()
-  ## c++
-  if (CMAKE_LIBCXX_INCLUDE_PATH)
-    include_directories (${CMAKE_LIBCXX_INCLUDE_PATH})
-  endif ()
-  if (CMAKE_LIBCXX_LIB_PATH)
-    link_directories (${CMAKE_LIBCXX_LIB_PATH})
-  endif ()
-
   # compiler flags
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 
