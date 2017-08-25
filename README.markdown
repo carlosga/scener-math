@@ -1,3 +1,5 @@
+[![build status](https://gitlab.com/carlosga/tvml/badges/master/build.svg)](https://gitlab.com/carlosga/tvml/commits/master)
+
 # scener-math
 
 [**scener**](http://gitlab.com/carlosga/scener) math library (**C++ learning project**)
