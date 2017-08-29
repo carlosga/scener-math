@@ -126,22 +126,24 @@ namespace scener::math::matrix
         basic_matrix4<T> inv;
 
         // Adapted from : ftp://download.intel.com/design/PentiumIII/sml/24504301.pdf
-        std::array<T, 12> tmp; /* temp array for pairs */
         auto src = transpose(m);
 
         // calculate pairs for first 8 elements (cofactors)
-        tmp[ 0] = src.m33 * src.m44;
-        tmp[ 1] = src.m34 * src.m43;
-        tmp[ 2] = src.m32 * src.m44;
-        tmp[ 3] = src.m34 * src.m42;
-        tmp[ 4] = src.m32 * src.m43;
-        tmp[ 5] = src.m33 * src.m42;
-        tmp[ 6] = src.m31 * src.m44;
-        tmp[ 7] = src.m34 * src.m41;
-        tmp[ 8] = src.m31 * src.m43;
-        tmp[ 9] = src.m33 * src.m41;
-        tmp[10] = src.m31 * src.m42;
-        tmp[11] = src.m32 * src.m41;
+        std::array<T, 12> tmp
+        {
+            src.m33 * src.m44
+          , src.m34 * src.m43
+          , src.m32 * src.m44
+          , src.m34 * src.m42
+          , src.m32 * src.m43
+          , src.m33 * src.m42
+          , src.m31 * src.m44
+          , src.m34 * src.m41
+          , src.m31 * src.m43
+          , src.m33 * src.m41
+          , src.m31 * src.m42
+          , src.m32 * src.m41
+        }; /* temp array for pairs */
 
         // calculate first 8 elements (cofactors)
         inv.m11  = tmp[0] * src.m22 + tmp[3] * src.m23 + tmp[ 4] * src.m24;
