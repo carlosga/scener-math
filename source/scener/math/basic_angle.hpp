@@ -76,7 +76,6 @@ namespace scener::math
     template <typename T, typename Unit>
     constexpr bool operator==(const basic_angle<T, Unit>& lhs
                             , const typename std::common_type_t<basic_angle<T, Unit>>& rhs) noexcept
-
     {
         return equal(lhs.value, rhs.value);
     }

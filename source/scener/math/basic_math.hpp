@@ -9,7 +9,7 @@
 #include <limits>
 #include <type_traits>
 
-namespace scener::math 
+namespace scener::math
 {
     /// Represents the mathematical constant e.
     template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
