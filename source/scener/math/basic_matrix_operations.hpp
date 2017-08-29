@@ -4,6 +4,8 @@
 #ifndef SCENER_MATH_BASIC_MATRIX_OPERATIONS_HPP
 #define SCENER_MATH_BASIC_MATRIX_OPERATIONS_HPP
 
+#include <array>
+
 #include "scener/math/basic_matrix.hpp"
 #include "scener/math/basic_angle.hpp"
 #include "scener/math/basic_quaternion_operations.hpp"
