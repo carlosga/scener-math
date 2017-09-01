@@ -20,37 +20,27 @@ namespace scener::math
         {
         }
 
-        constexpr basic_size(T width, T height) noexcept
-            : _width { width }, _height { height }
+        constexpr basic_size(T w, T h) noexcept
+            : width { w }, height { h }
         {
         }
 
     public:
         constexpr bool empty() const noexcept
         {
-            return (_width == T(0) && _height == T(0));
-        }
-
-        constexpr T width() const noexcept
-        {
-            return _width;
-        }
-
-        constexpr T height() const noexcept
-        {
-            return _height;
+            return (width == T(0) && height == T(0));
         }
 
     public:
         template <typename K>
         constexpr operator basic_size<K>() const noexcept
         {
-            return { K(_width), K(_height) };
+            return { K(width), K(height) };
         }
 
-    private:
-        T _width;
-        T _height;
+    public:
+        T width;
+        T height;
     };
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -65,7 +55,7 @@ namespace scener::math
     template <typename T>
     constexpr bool operator==(const basic_size<T>& lhs, const basic_size<T>& rhs) noexcept
     {
-        return (lhs._width == rhs._width && lhs._height == rhs._height);
+        return (lhs.width == rhs.width && lhs.height == rhs.height);
     }
 
     /// Inequality operator for comparing basic_size instances.
@@ -79,8 +69,8 @@ namespace scener::math
     template <typename T>
     constexpr basic_size<T>& operator-=(basic_size<T>& lhs, const basic_size<T>& rhs) noexcept
     {
-        lhs._width -= rhs._height;
-        lhs._width -= rhs._height;
+        lhs.width -= rhs.height;
+        lhs.width -= rhs.height;
 
         return lhs;
     }
@@ -100,8 +90,8 @@ namespace scener::math
     template <typename T>
     constexpr basic_size<T>& operator+=(basic_size<T>& lhs, const basic_size<T>& rhs) noexcept
     {
-        lhs._width  += rhs._width;
-        lhs._height += rhs._height;
+        lhs.width  += rhs.width;
+        lhs.height += rhs.height;
 
         return lhs;
     }
