@@ -6,7 +6,7 @@
 
 #include "scener/math/basic_vector.hpp"
 
-namespace scener::math 
+namespace scener::math
 {
     // -----------------------------------------------------------------------------------------------------------------
     // TEMPLATES
@@ -69,18 +69,18 @@ namespace scener::math
     public:
         constexpr T& operator[](const std::size_t& index) noexcept
         {
-            return items[index];
+            return components[index];
         }
 
         constexpr const T& operator[](const std::size_t& index) const noexcept
         {
-            return items[index];
+            return components[index];
         }
 
     public:
         union
         {
-            std::array<T, 4> items;
+            std::array<T, 4> components;
             struct
             {
                 T r;

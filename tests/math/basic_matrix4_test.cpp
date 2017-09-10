@@ -1769,9 +1769,9 @@ TEST_F(basic_matrix4_test, create_translation)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_matrix4_test, create_translation1)
 {
-    float  xPosition = 2.0f;
-    float  yPosition = 3.0f;
-    float  zPosition = 4.0f;
+    float xPosition = 2.0f;
+    float yPosition = 3.0f;
+    float zPosition = 4.0f;
     matrix4 expected = { 1.0f, 0.0f, 0.0f, 0.0f
                        , 0.0f, 1.0f, 0.0f, 0.0f
                        , 0.0f, 0.0f, 1.0f, 0.0f
@@ -1836,22 +1836,22 @@ TEST_F(basic_matrix4_test, is_identity)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_matrix4_test, EqualsNan)
 {
-    matrix4 a = { nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 b = { 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 c = { 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 d = { 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 e = { 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 f = { 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 g = { 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 h = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 i = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 j = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    , 0    };
-    matrix4 k = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    , 0    };
-    matrix4 l = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    , 0    };
-    matrix4 m = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    , 0    };
-    matrix4 n = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    , 0    };
-    matrix4 o = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>, 0    };
-    matrix4 p = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , nan<>};
+    matrix4 a = { NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 b = { 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 c = { 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 d = { 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 e = { 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 f = { 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 g = { 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 h = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 i = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 j = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    , 0    };
+    matrix4 k = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    , 0    };
+    matrix4 l = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    , 0    };
+    matrix4 m = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    , 0    };
+    matrix4 n = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    , 0    };
+    matrix4 o = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>, 0    };
+    matrix4 p = { 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , NaN<>};
 
     EXPECT_FALSE(a == matrix4 {});
     EXPECT_FALSE(b == matrix4 {});

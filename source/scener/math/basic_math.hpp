@@ -49,7 +49,7 @@ namespace scener::math
 
     /// Represents not a number (NaN).
     template <typename T = float, typename = std::enable_if_t<std::numeric_limits<T>::has_quiet_NaN>>
-    constexpr T nan = std::numeric_limits<float>::quiet_NaN();
+    constexpr T NaN = std::numeric_limits<T>::quiet_NaN();
 
     /// Represents the smallest positive value that is greater than zero.
     template <typename T = float, typename = std::enable_if_t<std::is_arithmetic_v<T>>>

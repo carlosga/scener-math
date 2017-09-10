@@ -691,7 +691,7 @@ TEST_F(basic_vector4_test, division1)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector4_test, division_by_zero_scalar)
 {
-    auto a      = vector4 { -2.0f, 3.0f, max_value<>, nan<> };
+    auto a      = vector4 { -2.0f, 3.0f, max_value<>, NaN<> };
     auto div    = 0.0f;
     auto actual = a / div;
 
@@ -737,7 +737,7 @@ TEST_F(basic_vector4_test, add)
     auto v2 = vector4 { 5.5f, 4.5f, 6.5f, 7.5f };
 
     auto v3 = v1 + v2;
-    auto v5 = vector4 { -1.0f, 0.0f, 0.0f, nan<> };
+    auto v5 = vector4 { -1.0f, 0.0f, 0.0f, NaN<> };
     auto v4 = v1 + v5;
 
     EXPECT_TRUE( 8.0f == v3.x);
@@ -816,7 +816,7 @@ TEST_F(basic_vector4_test, default_constructor)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector4_test, constructor_with_special_floating_values)
 {
-    auto target = vector4 { nan<>, max_value<>, positive_infinity<>, epsilon<> };
+    auto target = vector4 { NaN<>, max_value<>, positive_infinity<>, epsilon<> };
 
     EXPECT_TRUE(is_nan(target.x));
     EXPECT_TRUE(equality_helper::equal(max_value<>, target.y));
@@ -955,10 +955,10 @@ TEST_F(basic_vector4_test, constructor_with_scalar_value)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector4_test, equals_nan)
 {
-    vector4 a { nan<>, 0    , 0    , 0     };
-    vector4 b { 0    , nan<>, 0    , 0     };
-    vector4 c { 0    , 0    , nan<>, 0     };
-    vector4 d { 0    , 0    , 0    , nan<> };
+    vector4 a { NaN<>, 0    , 0    , 0     };
+    vector4 b { 0    , NaN<>, 0    , 0     };
+    vector4 c { 0    , 0    , NaN<>, 0     };
+    vector4 d { 0    , 0    , 0    , NaN<> };
 
     EXPECT_FALSE(a == vector4::zero());
     EXPECT_FALSE(b == vector4::zero());
@@ -975,7 +975,7 @@ TEST_F(basic_vector4_test, equals_nan)
 TEST_F(basic_vector4_test, abs)
 {
     vector4 v1 { -2.5f, 2.0f, 3.0f, 3.3f };
-    vector4 v3 = vector::abs(vector4 { positive_infinity<>, 0.0f, negative_infinity<>, nan<> });
+    vector4 v3 = vector::abs(vector4 { positive_infinity<>, 0.0f, negative_infinity<>, NaN<> });
     vector4 v  = vector::abs(v1);
 
     EXPECT_EQ(2.5f, v.x);

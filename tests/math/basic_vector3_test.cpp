@@ -826,7 +826,7 @@ TEST_F(basic_vector3_test, unary_negation)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector3_test, unary_Negation_with_special_values)
 {
-    auto a = -vector3 { nan<>, positive_infinity<>, negative_infinity<> };
+    auto a = -vector3 { NaN<>, positive_infinity<>, negative_infinity<> };
     auto b = -vector3 { 0.0f, 0.0f, 0.0f };
 
     EXPECT_TRUE(is_nan(a.x));
@@ -993,7 +993,7 @@ TEST_F(basic_vector3_test, constructor2)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector3_test, constructor_with_special_float_values)
 {
-    auto target = vector3 { nan<>, max_value<> , positive_infinity<> };
+    auto target = vector3 { NaN<>, max_value<> , positive_infinity<> };
 
     EXPECT_TRUE(is_nan(target.x));
     EXPECT_EQ(max_value<>, target.y);
@@ -1131,9 +1131,9 @@ TEST_F(basic_vector3_test, constructor4)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector3_test, equals_nan)
 {
-    auto a = vector3 { nan<>, 0    , 0     };
-    auto b = vector3 { 0    , nan<>, 0     };
-    auto c = vector3 { 0    , 0    , nan<> };
+    auto a = vector3 { NaN<>, 0    , 0     };
+    auto b = vector3 { 0    , NaN<>, 0     };
+    auto c = vector3 { 0    , 0    , NaN<> };
 
     EXPECT_FALSE(a == vector3::zero());
     EXPECT_FALSE(b == vector3::zero());
@@ -1148,7 +1148,7 @@ TEST_F(basic_vector3_test, equals_nan)
 TEST_F(basic_vector3_test, abs)
 {
     auto v1 = vector3 { -2.5f, 2.0f, 0.5f };
-    auto v3 = vector::abs(vector3 { 0.0f, negative_infinity<>, nan<> });
+    auto v3 = vector::abs(vector3 { 0.0f, negative_infinity<>, NaN<> });
     auto v  = vector::abs(v1);
 
     EXPECT_EQ(2.5f, v.x);

@@ -28,7 +28,7 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64 -std=c++1z")
 
 if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-    # "-Weverything -Wno-undef -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-nested-anon-types -Wno-gnu-anonymous-struct"    
+    # "-Weverything -Wno-undef -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-nested-anon-types -Wno-gnu-anonymous-struct"
 endif ()
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
@@ -38,7 +38,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # linker flags
   set (CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS}    -lc++ -lc++abi")
   set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -lc++ -lc++abi")
-  set (CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -lc++ -lc++abi")  
+  set (CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -lc++ -lc++abi")
+
+elseif ( "${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" )
 endif ()
 
 # tests subdirectory

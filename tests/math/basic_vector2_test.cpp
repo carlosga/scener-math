@@ -454,7 +454,7 @@ TEST_F(basic_vector2_test, unary_negation_with_infinity_values)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector2_test, unary_negation_with_nan_value)
 {
-    auto a      = vector2 { nan<>, 0.0f };
+    auto a      = vector2 { NaN<>, 0.0f };
     auto actual = -a;
 
     EXPECT_TRUE(is_nan(actual.x));
@@ -586,7 +586,7 @@ TEST_F(basic_vector2_test, default_constructor)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector2_test, constructor_with_special_values)
 {
-    auto target = vector2 { nan<>, max_value<> };
+    auto target = vector2 { NaN<>, max_value<> };
 
     EXPECT_TRUE(is_nan(target.x));
     EXPECT_EQ(max_value<>, target.y);
@@ -702,8 +702,8 @@ TEST_F(basic_vector2_test, zero)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector2_test, equals)
 {
-    auto a = vector2 { nan<>, 0.0f  };
-    auto b = vector2 { 0    , nan<> };
+    auto a = vector2 { NaN<>, 0.0f  };
+    auto b = vector2 { 0    , NaN<> };
 
     EXPECT_FALSE(a == vector2::zero());
     EXPECT_FALSE(b == vector2::zero());

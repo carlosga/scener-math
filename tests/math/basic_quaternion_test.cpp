@@ -789,10 +789,10 @@ TEST_F(basic_quaternion_test, is_identity)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_quaternion_test, equals_nan)
 {
-    auto a = quaternion { nan<>, 0    , 0    , 0     };
-    auto b = quaternion { 0    , nan<>, 0    , 0     };
-    auto c = quaternion { 0    , 0    , nan<>, 0     };
-    auto d = quaternion { 0    , 0    , 0    , nan<> };
+    auto a = quaternion { NaN<>, 0    , 0    , 0     };
+    auto b = quaternion { 0    , NaN<>, 0    , 0     };
+    auto c = quaternion { 0    , 0    , NaN<>, 0     };
+    auto d = quaternion { 0    , 0    , 0    , NaN<> };
     auto z = quaternion { 0    , 0    , 0    , 0     };
 
     EXPECT_FALSE(a == z);

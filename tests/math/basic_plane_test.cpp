@@ -265,10 +265,10 @@ TEST_F(basic_plane_test, transform_by_quaternion)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_plane_test, equals_nan)
 {
-    plane_t a = { nan<>, 0    , 0    , 0     };
-    plane_t b = { 0    , nan<>, 0    , 0     };
-    plane_t c = { 0    , 0    , nan<>, 0     };
-    plane_t d = { 0    , 0    , 0    , nan<> };
+    plane_t a = { NaN<>, 0    , 0    , 0     };
+    plane_t b = { 0    , NaN<>, 0    , 0     };
+    plane_t c = { 0    , 0    , NaN<>, 0     };
+    plane_t d = { 0    , 0    , 0    , NaN<> };
     plane_t z = { 0    , 0    , 0    , 0     };
 
     EXPECT_FALSE(a == z);
