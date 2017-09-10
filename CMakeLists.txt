@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2.2)
-project (scener::math::root)
+project (scener::math)
 enable_language(CXX)
 
 #set (CMAKE_VERBOSE_MAKEFILE on)
