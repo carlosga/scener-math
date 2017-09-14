@@ -13,19 +13,19 @@ TEST_F(basic_rect_test, default_constructor)
 {
     basic_rect<std::uint32_t> rect;
 
-    EXPECT_EQ(0, rect.location().x);
-    EXPECT_EQ(0, rect.location().y);
-    EXPECT_EQ(0, rect.size().width);
-    EXPECT_EQ(0, rect.size().height);
+    EXPECT_EQ(0u, rect.location().x);
+    EXPECT_EQ(0u, rect.location().y);
+    EXPECT_EQ(0u, rect.size().width);
+    EXPECT_EQ(0u, rect.size().height);
 }
 
 TEST_F(basic_rect_test, construct_with_location_and_size)
 {
-    basic_rect<std::uint32_t> rect(0, 0, 1900, 600);
+    basic_rect<std::uint32_t> rect(0u, 0u, 1900u, 600u);
 
-    EXPECT_EQ(   0, rect.location().x);
-    EXPECT_EQ(   0, rect.location().y);
-    EXPECT_EQ(1900, rect.size().width);
-    EXPECT_EQ( 600, rect.size().height);
+    EXPECT_EQ(   0u, rect.location().x);
+    EXPECT_EQ(   0u, rect.location().y);
+    EXPECT_EQ(1900u, rect.size().width);
+    EXPECT_EQ( 600u, rect.size().height);
 }
 

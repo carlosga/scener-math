@@ -10,7 +10,7 @@
 #include "scener/math/basic_vector.hpp"
 #include "scener/math/basic_angle.hpp"
 
-namespace scener::math::vector 
+namespace scener::math::vector
 {
     /// Returns a vector whose elements are the absolute values of each of the specified vector's elements.
     /// \param value a vector.
@@ -165,7 +165,7 @@ namespace scener::math::vector
         basic_vector<T, Dimension> vector;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), math::functional::min<T>());
-        
+
         return vector;
     }
 
@@ -318,7 +318,7 @@ namespace scener::math::vector
         return (vector / length(vector));
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // VECTOR 3 SPECIALIZATION
 
     /// Calculates the cross product of two vector3 structures.

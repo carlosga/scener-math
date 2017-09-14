@@ -12,7 +12,7 @@
 #include "scener/math/basic_vector_operations.hpp"
 #include "scener/math/basic_plane_operations.hpp"
 
-namespace scener::math::matrix 
+namespace scener::math::matrix
 {
     /// Returns a value indicating wheter the given matrix is an identity matrix .
     /// \param matrix the matrix to check for identity equality.
@@ -317,7 +317,7 @@ namespace scener::math::matrix
         return result;
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // MATRIX 4x4 FUNCTIONS
 
     /// Creates a new Matrix that rotates around an arbitrary axis.

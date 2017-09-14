@@ -8,7 +8,7 @@
 
 #include "scener/math/basic_vector.hpp"
 
-namespace scener::math 
+namespace scener::math
 {
     // -----------------------------------------------------------------------------------------------------------------
     // TRAITS
@@ -28,7 +28,7 @@ namespace scener::math
         using size_type              = std::size_t;
     };
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // TEMPLATES
 
     /// Represents a squared matrix.
@@ -46,7 +46,7 @@ namespace scener::math
         using reverse_iterator       = typename traits_type::reverse_iterator;
         using const_reverse_iterator = typename traits_type::const_reverse_iterator;
         using size_type              = typename traits_type::size_type;
-        
+
     public:
         /// Returns an instance of the identity matrix.
         /// \returns an instance of the identity matrix.
@@ -66,7 +66,7 @@ namespace scener::math
         /// Initializes a new instance of the basic_matrix struct.
         constexpr basic_matrix() noexcept
         {
-        }    
+        }
 
     public:
         /// Returns a pointer to the matrix data.
@@ -194,7 +194,7 @@ namespace scener::math
         };
     };
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // MATRIX 4x4 SPECIALIZATION
 
     /// Represents a 4 x 4 matrix.
@@ -446,7 +446,7 @@ namespace scener::math
         };
     };
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // TYPEDEF'S & ALIASES
 
     template <typename T>
@@ -462,7 +462,7 @@ namespace scener::math
     using matrix3 = basic_matrix3<float>;
     using matrix4 = basic_matrix4<float>;
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // OPERATORS
 
     template <typename T, std::size_t Dimension>
@@ -515,7 +515,7 @@ namespace scener::math
                                                    , const basic_matrix<T, Dimension>& rhs) noexcept
     {
         std::transform(lhs.begin(), lhs.end(), rhs.begin(), lhs.begin(), std::plus<T>());
-        
+
         return lhs;
     }
 
@@ -555,19 +555,19 @@ namespace scener::math
     {
         basic_matrix<T, Dimension> result;
 
-        std::transform(matrix.begin(), matrix.end(), result.begin(), std::negate<T>());        
+        std::transform(matrix.begin(), matrix.end(), result.begin(), std::negate<T>());
 
         return result;
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // OPERATORS (WITH SCALARS)
 
     template <typename T, std::size_t Dimension>
     constexpr basic_matrix<T, Dimension>& operator*=(basic_matrix<T, Dimension>& lhs, const T& rhs) noexcept
     {
         std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<T>(), rhs));
-        
+
         return lhs;
     }
 
@@ -581,7 +581,7 @@ namespace scener::math
         return result;
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // OPERATORS (MATRIX 4x4)
 
     template <typename T>
@@ -642,7 +642,7 @@ namespace scener::math
         return lhs;
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // OPERATORS (VECTOR | MATRIX 4x4)
 
     template <typename T = float>

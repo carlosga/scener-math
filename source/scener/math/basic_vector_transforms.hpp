@@ -76,7 +76,7 @@ namespace scener::math::vector
         return (value * matrix::create_from_quaternion(rotation));
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------------------
     // TRANSFORM NORMAL: VECTOR by MATRIX
 
     /// This method transforms the vector normal (x, y, 0) of the source vector,
