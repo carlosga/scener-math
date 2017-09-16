@@ -38,7 +38,7 @@ namespace scener::math::matrix
     /// Returns the tranpose of the given matrix.
     /// \param matrix the source matrix.
     /// \returns the transposed matrix.
-    template <typename T, std::size_t Dimension>
+    template <typename T = float, std::size_t Dimension>
     constexpr basic_matrix<T, Dimension> transpose(const basic_matrix<T, Dimension>& matrix) noexcept
     {
         basic_matrix<T, Dimension> result;
@@ -257,9 +257,9 @@ namespace scener::math::matrix
         } while (++count < 100 && norm > epsilon<T>);
 
         // Extract the scale
-        auto v1 = basic_vector3<T> { mcopy.m11, mcopy.m12, mcopy.m13 };
-        auto v2 = basic_vector3<T> { mcopy.m21, mcopy.m22, mcopy.m23 };
-        auto v3 = basic_vector3<T> { mcopy.m31, mcopy.m32, mcopy.m33 };
+        basic_vector3<T> v1 { mcopy.m11, mcopy.m12, mcopy.m13 };
+        basic_vector3<T> v2 { mcopy.m21, mcopy.m22, mcopy.m23 };
+        basic_vector3<T> v3 { mcopy.m31, mcopy.m32, mcopy.m33 };
 
         scale = { vector::length(v1), vector::length(v2), vector::length(v3) };
 
@@ -312,7 +312,7 @@ namespace scener::math::matrix
         basic_matrix<T, Dimension> result;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), result.begin()
-                     , [&amount](T a, T b) -> T { return math::lerp(a, b, amount); });
+                     , [amount](T a, T b) -> T { return math::lerp(a, b, amount); });
 
         return result;
     }

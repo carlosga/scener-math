@@ -354,6 +354,52 @@ TEST_F(basic_vector2_test, lerp_from_same_point)
     EXPECT_EQ(expected, actual);
 }
 
+// A test for Hermite (Vector2f, Vector2f, Vector2f, Vector2f, float)
+TEST_F(basic_vector2_test, hermite)
+{
+    auto expected1 = vector2 {  1.40625f, 1.40625f    };
+    auto expected2 = vector2 { 2.662375f, 2.26537514f };
+
+    auto v1 = vector2 { 1.0f, 1.0f };
+    auto v2 = vector2 { 2.0f, 2.0f };
+    auto v3 = vector2 { 3.0f, 3.0f };
+    auto v4 = vector2 { 4.0f, 4.0f };
+    auto v5 = vector2 { 4.0f, 3.0f };
+    auto v6 = vector2 { 2.0f, 1.0f };
+    auto v7 = vector2 { 1.0f, 2.0f };
+    auto v8 = vector2 { 3.0f, 4.0f };
+
+    EXPECT_EQ(expected1, vector::hermite(v1, v2, v3, v4, 0.25f));
+    EXPECT_EQ(expected2, vector::hermite(v5, v6, v7, v8, 0.45f));
+}
+
+TEST_F(basic_vector2_test, barycentric)
+{
+    auto vector_1 = vector2 { 0.0f, 0.0f };
+    auto vector_2 = vector2 { 1.0f, 0.0f };
+    auto vector_3 = vector2 { 0.0f, 1.0f };
+    auto amount_1 = 0.5f;
+    auto amount_2 = 0.5f;
+    auto expected = vector2 { 0.5f, 0.5f };
+    auto actual   = vector::barycentric(vector_1, vector_2, vector_3, amount_1, amount_2);
+
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(basic_vector2_test, catmull_rom)
+{
+    vector2 v1 { 1.0f, 2.0f };
+    vector2 v2 { 3.0f, 4.0f };
+    vector2 v3 { 5.0f, 6.0f };
+    vector2 v4 { 7.0f, 8.0f };
+
+    vector2 expected { 5.19440031f, 6.19440031f };
+
+    auto result = vector::catmull_rom(v1, v2, v3, v4, 1.0972f);
+
+    EXPECT_EQ(expected, result);
+}
+
 // A test for Transform(Vector2f, Matrix4x4)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector2_test, transform)

@@ -6,9 +6,10 @@
 
 #include <numeric>
 
-#include "scener/math/basic_math_functional.hpp"
+#include "scener/math/algorithm.hpp"
 #include "scener/math/basic_vector.hpp"
 #include "scener/math/basic_angle.hpp"
+#include "scener/math/functional.hpp"
 
 namespace scener::math::vector
 {
@@ -20,7 +21,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value.begin(), value.end(), vector.begin(), math::functional::abs<T>());
+        std::transform(value.begin(), value.end(), vector.begin(), functional::abs<>());
 
         return vector;
     }
@@ -44,10 +45,8 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        for (std::size_t i = 0; i < Dimension; ++i)
-        {
-            vector[i] = math::barycentric(value1[i], value2[i], value3[i], amount1, amount2);
-        }
+        algorithm::transform(value1.begin(), value1.end(), value2.begin(), value3.begin(), vector.begin()
+            , [amount1, amount2](T a, T b, T c) -> T { return math::barycentric(a, b, c, amount1, amount2); });
 
         return vector;
     }
@@ -68,10 +67,10 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        for (std::size_t i = 0; i < Dimension; ++i)
-        {
-            vector[i] = math::catmull_rom(value1[i], value2[i], value3[i], value4[i], amount);
-        }
+        algorithm::transform(value1.begin(), value1.end(), value2.begin(), value3.begin(), value4.begin(), vector.begin()
+            , [amount](T a, T b, T c, T d) -> T { return math::catmull_rom(a, b, c, d, amount); });
+
+        return vector;
     }
 
     /// Restricts a value to be within a specified range.
@@ -86,10 +85,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        for (std::size_t i = 0; i < Dimension; ++i)
-        {
-            vector[i] = math::clamp(value1[i], min[i], max[i]);
-        }
+        algorithm::transform(value1.begin(), value1.end(), min.begin(), max.begin(), vector.begin(), functional::clamp<>());
 
         return vector;
     }
@@ -128,10 +124,8 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        for (std::size_t i = 0; i < Dimension; ++i)
-        {
-            vector[i] = math::hermite(value1[i], tangent1[i], value2[i], tangent2[i], amount);
-        }
+        algorithm::transform(value1.begin(), value1.end(), tangent1.begin(), value2.begin(), tangent2.begin(), vector.begin()
+            , [amount](T a, T b, T c, T d) -> T { return math::hermite(a, b, c, d, amount); });
 
         return vector;
     }
@@ -149,7 +143,7 @@ namespace scener::math::vector
         basic_vector<T, Dimension> vector;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [&amount](T a, T b) -> T { return math::lerp(a, b, amount); });
+            , [amount](T a, T b) -> T { return math::lerp(a, b, amount); });
 
         return vector;
     }
@@ -164,7 +158,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), math::functional::min<T>());
+        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), functional::min<>());
 
         return vector;
     }
@@ -179,7 +173,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), math::functional::max<T>());
+        std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin(), functional::max<>());
 
         return vector;
     }
@@ -221,7 +215,7 @@ namespace scener::math::vector
         basic_vector<T, Dimension> vector;
 
         std::transform(value1.begin(), value1.end(), value2.begin(), vector.begin()
-                     , [&amount](T a, T b) -> T { return math::smooth_step(a, b, amount); });
+            , [amount](T a, T b) -> T { return math::smooth_step(a, b, amount); });
 
         return vector;
     }
@@ -234,7 +228,7 @@ namespace scener::math::vector
     {
         basic_vector<T, Dimension> vector;
 
-        std::transform(value.begin(), value.end(), vector.begin(), math::functional::sqrt<T>());
+        std::transform(value.begin(), value.end(), vector.begin(), functional::sqrt<>());
 
         return vector;
     }
@@ -278,9 +272,7 @@ namespace scener::math::vector
     constexpr basic_radians<T> angle_between(const basic_vector<T, Dimension>& left
                                            , const basic_vector<T, Dimension>& right) noexcept
     {
-        T lengthSquared = length_squared(left) * length_squared(right);
-
-        return basic_radians<T> { std::acos(dot(left, right) / std::sqrt(lengthSquared)) };
+        return { std::acos(dot(left, right) / std::sqrt(length_squared(left) * length_squared(right))) };
     }
 
     /// Calculates the distance between two vectors.

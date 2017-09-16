@@ -268,6 +268,20 @@ TEST_F(basic_vector3_test, lerp)
     EXPECT_EQ(70.0f, result.z);
 }
 
+TEST_F(basic_vector3_test, barycentric)
+{
+    auto vector_1 = vector3 {  1.0f,  1.0f,  1.0f };
+    auto vector_2 = vector3 { -5.0f, -2.0f, 13.0f };
+    auto vector_3 = vector3 {  5.0f, -7.0f, 17.0f };
+    auto amount_1 = -2.0f;
+    auto amount_2 =  9.0f;
+    auto expected = vector3 { 49.0f, -65.0f, 121.0f };
+    auto actual   = vector::barycentric(vector_1, vector_2, vector_3, amount_1, amount_2);
+
+    EXPECT_EQ(expected, actual);
+}
+
+
 // A test for Cross (vec3f, vec3f)
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
 TEST_F(basic_vector3_test, cross1)
@@ -824,7 +838,7 @@ TEST_F(basic_vector3_test, unary_negation)
 }
 
 // Ported from Microsoft .NET corefx System.Numerics.Vectors test suite
-TEST_F(basic_vector3_test, unary_Negation_with_special_values)
+TEST_F(basic_vector3_test, unary_negation_with_special_values)
 {
     auto a = -vector3 { NaN<>, positive_infinity<>, negative_infinity<> };
     auto b = -vector3 { 0.0f, 0.0f, 0.0f };

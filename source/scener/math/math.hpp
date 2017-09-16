@@ -4,8 +4,9 @@
 #ifndef SCENER_MATH_MATH_HPP
 #define SCENER_MATH_MATH_HPP
 
+#include "scener/math/functional.hpp"
+
 #include "scener/math/basic_math.hpp"
-#include "scener/math/basic_math_functional.hpp"
 
 #include "scener/math/containment_type.hpp"
 #include "scener/math/plane_intersection_type.hpp"

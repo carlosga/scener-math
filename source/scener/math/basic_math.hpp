@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <functional>
 #include <limits>
 #include <type_traits>
 
@@ -151,6 +152,7 @@ namespace scener::math
         //  v1 + f(v2 - v1) + g(v3 - v1)
 
         return ((1 - amount1 - amount2) * value1) + (amount1 * value2) + (amount2 * value3);
+        // return value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
     }
 
     /// Performs a Catmull-Rom interpolation using the specified positions.
@@ -186,7 +188,7 @@ namespace scener::math
     {
         const T max_value = ((max_ < min_) ? min_ : max_);
 
-        return ((value < min_) ? min_ : ((value > max_value) ? max_value : value));
+        return std::clamp(value, min_, max_value);
     }
 
     /// Calculates a hermite spline interpolation.
