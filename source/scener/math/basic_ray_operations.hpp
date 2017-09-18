@@ -15,11 +15,11 @@
 namespace scener::math
 {
     template <typename T>
-    constexpr bool intersects(const basic_ray<T>& ray, const basic_bounding_box<T>& box) noexcept
+    constexpr bool intersects(const basic_ray<T>& ray_, const basic_bounding_box<T>& box_) noexcept
     {
         // Reference: http://www.gamedev.net/page/resources/_/technical/math-and-physics/intersection-math-algorithms-learn-to-derive-r3033
-        auto tmin = (box.min - ray.position) / ray.direction;
-        auto tmax = (box.max - ray.position) / ray.direction;
+        auto tmin = (box_.min - ray_.position) / ray_.direction;
+        auto tmax = (box_.max - ray_.position) / ray_.direction;
 
         auto tnear = vector::min(tmin, tmax);
         auto tfar  = vector::max(tmin, tmax);
@@ -37,12 +37,12 @@ namespace scener::math
     //}
 
     template <typename T>
-    constexpr bool intersects(const basic_ray<T>& ray, const basic_bounding_sphere<T>& sphere) noexcept
+    constexpr bool intersects(const basic_ray<T>& ray_, const basic_bounding_sphere<T>& sphere) noexcept
     {
         // Reference: http://www.gamedev.net/page/resources/_/technical/math-and-physics/intersection-math-algorithms-learn-to-derive-r3033
         auto rad2 = sphere.radius * sphere.radius;
-        auto l    = sphere.center - ray.position;
-        auto tPX  = vector::dot(l, ray.direction);
+        auto l    = sphere.center - ray_.position;
+        auto tPX  = vector::dot(l, ray_.direction);
 
         if (tPX < T(0))
         {
@@ -68,17 +68,17 @@ namespace scener::math
     }
 
     template <typename T>
-    constexpr bool intersects(const basic_ray<T>& ray, const basic_plane<T>& plane) noexcept
+    constexpr bool intersects(const basic_ray<T>& ray_, const basic_plane<T>& plane) noexcept
     {
         // Reference: http://www.gamedev.net/page/resources/_/technical/math-and-physics/intersection-math-algorithms-learn-to-derive-r3033
-        auto denom = vector::dot(plane.normal, ray.direction);
+        auto denom = vector::dot(plane.normal, ray_.direction);
 
         if (std::abs(denom) == T(0)) // ray and plane are parallel so there is no intersection
         {
             return false;
         }
 
-        auto t = -(vector::dot(ray.position, plane.normal) + plane.d) / denom;
+        auto t = -(vector::dot(ray_.position, plane.normal) + plane.d) / denom;
 
         return (t > T(0));
     }

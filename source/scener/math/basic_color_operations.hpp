@@ -6,18 +6,18 @@
 
 #include "scener/math/basic_color.hpp"
 
-namespace scener::math 
+namespace scener::math
 {
     // -----------------------------------------------------------------------------------------------------------------
     // OPERATIONS
 
     template <typename T>
-    constexpr std::uint32_t packed_value(const basic_color<T>& color) noexcept
+    constexpr std::uint32_t packed_value(const basic_color<T>& value) noexcept
     {
-        return ((static_cast<std::uint32_t>(color.r) * 255) << 24)
-             + ((static_cast<std::uint32_t>(color.g) * 255) << 16)
-             + ((static_cast<std::uint32_t>(color.b) * 255) << 8)
-             +  (static_cast<std::uint32_t>(color.a) * 255);
+        return ((static_cast<std::uint32_t>(value.r) * 255) << 24)
+             + ((static_cast<std::uint32_t>(value.g) * 255) << 16)
+             + ((static_cast<std::uint32_t>(value.b) * 255) << 8)
+             +  (static_cast<std::uint32_t>(value.a) * 255);
     }
 }
 

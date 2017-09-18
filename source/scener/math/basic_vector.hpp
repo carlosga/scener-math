@@ -216,10 +216,10 @@ namespace scener::math
         }
 
         /// Initializes a new instance of the basic_vector class with the given texture coordinates.
-        /// \param x the x-coordinate value.
-        /// \param y the y-coordinate value.
-        constexpr basic_vector(T x, T y) noexcept
-            : x { x }, y { y }
+        /// \param xx the x-coordinate value.
+        /// \param yy the y-coordinate value.
+        constexpr basic_vector(T xx, T yy) noexcept
+            : x { xx }, y { yy }
         {
         }
 
@@ -425,11 +425,11 @@ namespace scener::math
         }
 
         /// Initializes a new instance of the basic_vector class.
-        /// \param z The Z value of the new vector structure.
-        /// \param x The X value of the new vector structure.
-        /// \param y The Y value of the new vector structure.
-        constexpr basic_vector(T x, T y, T z) noexcept
-            : x { x }, y { y }, z { z }
+        /// \param xx The X value of the new vector structure.
+        /// \param yy The Y value of the new vector structure.
+        /// \param zz The Z value of the new vector structure.
+        constexpr basic_vector(T xx, T yy, T zz) noexcept
+            : x { xx }, y { yy }, z { zz }
         {
         }
 
@@ -627,27 +627,27 @@ namespace scener::math
         /// Initializes a new instance of the Vector4 class.
         /// \param vector a vector containing the values to initialize x and y components with.
         /// \param z value for the z-component of the vector.
-        /// \param w value for the w-component of the vector.
-        constexpr basic_vector(const basic_vector<T, 2>& vector, T z, T w) noexcept
-            : basic_vector { vector.x, vector.y, z, w }
+        /// \param ww value for the w-component of the vector.
+        constexpr basic_vector(const basic_vector<T, 2>& vector, T zz, T ww) noexcept
+            : basic_vector { vector.x, vector.y, zz, ww }
         {
         }
 
         /// Initializes a new instance of the Vector4 class.
         /// \param vector a vector containing the values to initialize x, y, and z components with.
-        /// \param w value for the w-component of the vector.
-        constexpr basic_vector(const basic_vector<T, 3>& vector, T w) noexcept
-            : basic_vector { vector.x, vector.y, vector.z, w }
+        /// \param ww value for the w-component of the vector.
+        constexpr basic_vector(const basic_vector<T, 3>& vector, T ww) noexcept
+            : basic_vector { vector.x, vector.y, vector.z, ww }
         {
         }
 
         /// Initializes a new instance of the Vector4 class.
-        /// \param x The X value of the new Vector4 structure.
-        /// \param y The Y value of the new Vector4 structure.
-        /// \param z The Z value of the new Vector4 structure.
-        /// \param w The W value of the new Vector4 structure.
-        constexpr basic_vector(T x, T y, T z, T w) noexcept
-            : x { x }, y { y }, z { z }, w { w }
+        /// \param xx The X value of the new Vector4 structure.
+        /// \param yy The Y value of the new Vector4 structure.
+        /// \param zz The Z value of the new Vector4 structure.
+        /// \param ww The W value of the new Vector4 structure.
+        constexpr basic_vector(T xx, T yy, T zz, T ww) noexcept
+            : x { xx }, y { yy }, z { zz }, w { ww }
         {
         }
 

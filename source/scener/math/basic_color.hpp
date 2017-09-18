@@ -48,21 +48,21 @@ namespace scener::math
         }
 
         /// Initializes a new instance of the Color class with the given red, green and blue components.
-        /// \param r The red component value of the color.
-        /// \param g The green component value of the color.
-        /// \param b The blue component value of the color.
-        constexpr basic_color(T r, T g, T b) noexcept
-            : basic_color  { r, g, b, T(1) }
+        /// \param rr The red component value of the color.
+        /// \param gg The green component value of the color.
+        /// \param bb The blue component value of the color.
+        constexpr basic_color(T rr, T gg, T bb) noexcept
+            : basic_color { rr, gg, bb, T(1) }
         {
         }
 
         /// Initializes a new instance of the Color class with the given red, green, blue and alpha components.
-        /// \param r The red component value of the color.
-        /// \param g The green component value of the color.
-        /// \param b The blue component value of the color.
-        /// \param a The alpha component value of the color.
-        constexpr basic_color(T r, T g, T b, T a) noexcept
-            : r { r }, g { g }, b { b }, a { a }
+        /// \param rr The red component value of the color.
+        /// \param gg The green component value of the color.
+        /// \param bb The blue component value of the color.
+        /// \param aa The alpha component value of the color.
+        constexpr basic_color(T rr, T gg, T bb, T aa) noexcept
+            : r { rr }, g { gg }, b { bb }, a { aa }
         {
         }
 

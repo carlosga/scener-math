@@ -235,50 +235,50 @@ namespace scener::math
         }
 
         /// Initializes a new instance of the basic_matrix struct with the given initial values.
-        /// \param m11 value of the (1,1) field of the new matrix.
-        /// \param m12 value of the (1,2) field of the new matrix.
-        /// \param m13 value of the (1,3) field of the new matrix.
-        /// \param m21 value of the (2,1) field of the new matrix.
-        /// \param m22 value of the (2,2) field of the new matrix.
-        /// \param m23 value of the (2,3) field of the new matrix.
-        /// \param m31 value of the (3,1) field of the new matrix.
-        /// \param m32 value of the (3,2) field of the new matrix.
-        /// \param m33 value of the (3,3) field of the new matrix.
-        constexpr basic_matrix(T m11, T m12, T m13
-                             , T m21, T m22, T m23
-                             , T m31, T m32, T m33) noexcept
-            : m11 { m11 }, m12 { m12 }, m13 { m13 }, m14 { 0 }
-            , m21 { m21 }, m22 { m22 }, m23 { m23 }, m24 { 0 }
-            , m31 { m31 }, m32 { m32 }, m33 { m33 }, m34 { 0 }
-            , m41 {  0  }, m42 {  0  }, m43 {  0  }, m44 { 1 }
+        /// \param m11_ value of the (1,1) field of the new matrix.
+        /// \param m12_ value of the (1,2) field of the new matrix.
+        /// \param m13_ value of the (1,3) field of the new matrix.
+        /// \param m21_ value of the (2,1) field of the new matrix.
+        /// \param m22_ value of the (2,2) field of the new matrix.
+        /// \param m23_ value of the (2,3) field of the new matrix.
+        /// \param m31_ value of the (3,1) field of the new matrix.
+        /// \param m32_ value of the (3,2) field of the new matrix.
+        /// \param m33_ value of the (3,3) field of the new matrix.
+        constexpr basic_matrix(T m11_, T m12_, T m13_
+                             , T m21_, T m22_, T m23_
+                             , T m31_, T m32_, T m33_) noexcept
+            : m11 { m11_ }, m12 { m12_ }, m13 { m13_ }, m14 { 0 }
+            , m21 { m21_ }, m22 { m22_ }, m23 { m23_ }, m24 { 0 }
+            , m31 { m31_ }, m32 { m32_ }, m33 { m33_ }, m34 { 0 }
+            , m41 {   0  }, m42 {   0  }, m43 {  0   }, m44 { 1 }
         {
         }
 
         /// Initializes a new instance of the basic_matrix struct with the given initial values.
-        /// \param m11 value of the (1,1) field of the new matrix.
-        /// \param m12 value of the (1,2) field of the new matrix.
-        /// \param m13 value of the (1,3) field of the new matrix.
-        /// \param m14 value of the (1,4) field of the new matrix.
-        /// \param m21 value of the (2,1) field of the new matrix.
-        /// \param m22 value of the (2,2) field of the new matrix.
-        /// \param m23 value of the (2,3) field of the new matrix.
-        /// \param m24 value of the (2,4) field of the new matrix.
-        /// \param m31 value of the (3,1) field of the new matrix.
-        /// \param m32 value of the (3,2) field of the new matrix.
-        /// \param m33 value of the (3,3) field of the new matrix.
-        /// \param m34 value of the (3,4) field of the new matrix.
-        /// \param m41 value of the (4,1) field of the new matrix.
-        /// \param m42 value of the (4,2) field of the new matrix.
-        /// \param m43 value of the (4,3) field of the new matrix.
-        /// \param m44 value of the (4,4) field of the new matrix.
-        constexpr basic_matrix(T m11, T m12, T m13, T m14
-                             , T m21, T m22, T m23, T m24
-                             , T m31, T m32, T m33, T m34
-                             , T m41, T m42, T m43, T m44) noexcept
-            : m11 { m11 }, m12 { m12 }, m13 { m13 }, m14 { m14 }
-            , m21 { m21 }, m22 { m22 }, m23 { m23 }, m24 { m24 }
-            , m31 { m31 }, m32 { m32 }, m33 { m33 }, m34 { m34 }
-            , m41 { m41 }, m42 { m42 }, m43 { m43 }, m44 { m44 }
+        /// \param m11_ value of the (1,1) field of the new matrix.
+        /// \param m12_ value of the (1,2) field of the new matrix.
+        /// \param m13_ value of the (1,3) field of the new matrix.
+        /// \param m14_ value of the (1,4) field of the new matrix.
+        /// \param m21_ value of the (2,1) field of the new matrix.
+        /// \param m22_ value of the (2,2) field of the new matrix.
+        /// \param m23_ value of the (2,3) field of the new matrix.
+        /// \param m24_ value of the (2,4) field of the new matrix.
+        /// \param m31_ value of the (3,1) field of the new matrix.
+        /// \param m32_ value of the (3,2) field of the new matrix.
+        /// \param m33_ value of the (3,3) field of the new matrix.
+        /// \param m34_ value of the (3,4) field of the new matrix.
+        /// \param m41_ value of the (4,1) field of the new matrix.
+        /// \param m42_ value of the (4,2) field of the new matrix.
+        /// \param m43_ value of the (4,3) field of the new matrix.
+        /// \param m44_ value of the (4,4) field of the new matrix.
+        constexpr basic_matrix(T m11_, T m12_, T m13_, T m14_
+                             , T m21_, T m22_, T m23_, T m24_
+                             , T m31_, T m32_, T m33_, T m34_
+                             , T m41_, T m42_, T m43_, T m44_) noexcept
+            : m11 { m11_ }, m12 { m12_ }, m13 { m13_ }, m14 { m14_ }
+            , m21 { m21_ }, m22 { m22_ }, m23 { m23_ }, m24 { m24_ }
+            , m31 { m31_ }, m32 { m32_ }, m33 { m33_ }, m34 { m34_ }
+            , m41 { m41_ }, m42 { m42_ }, m43 { m43_ }, m44 { m44_ }
         {
         }
 

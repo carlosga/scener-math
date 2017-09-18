@@ -102,9 +102,9 @@ namespace scener::math
     }
 
     template <typename T>
-    constexpr basic_point<T> operator-(const basic_point<T>& point) noexcept
+    constexpr basic_point<T> operator-(const basic_point<T>& value) noexcept
     {
-        return { -point.x, -point.y };
+        return { -value.x, -value.y };
     }
 }
 
