@@ -566,7 +566,7 @@ namespace scener::math
     template <typename T, std::size_t Dimension>
     constexpr basic_matrix<T, Dimension>& operator*=(basic_matrix<T, Dimension>& lhs, const T& rhs) noexcept
     {
-        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<T>(), rhs));
+        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind(std::multiplies<T>(), std::placeholders::_1, rhs));
 
         return lhs;
     }
@@ -621,7 +621,7 @@ namespace scener::math
     template <typename T>
     constexpr basic_matrix4<T> operator*=(basic_matrix4<T>& lhs, const T& rhs) noexcept
     {
-        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind2nd(std::multiplies<T>(), rhs));
+        std::transform(lhs.begin(), lhs.end(), lhs.begin(), std::bind(std::multiplies<T>(), std::placeholders::_1, rhs));
 
         return lhs;
     }
