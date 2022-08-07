@@ -31,13 +31,13 @@ sudo apt-get install cmake
 3. Configure the build (DEBUG)
 
 ```
-cd scener-math
+cd tvml
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=debug -DCMAKE_CXX_COMPILER=clang++-<VERSION> -DCMAKE_C_COMPILER=clang-<VERSION>
 ```
 
-4. Build 
+4. Build
 
 ```
 make -j <NUM_CORES>
