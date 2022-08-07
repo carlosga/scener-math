@@ -3,4 +3,4 @@
 # git submodule sync
 # git submodule update --init
 
-git pull --recurse-submodules && git submodule update --remote --recursive
+git submodule sync && git submodule update --init && git submodule update --remote --recursive --force
