@@ -1,8 +1,6 @@
-[![build status](https://gitlab.com/carlosga/tvml/badges/master/build.svg)](https://gitlab.com/carlosga/tvml/commits/master)
-
 # scener-math
 
-[**scener**](http://gitlab.com/carlosga/scener) math library (**C++ learning project**)
+[**scener**](http://github.com/carlosga/scener) math library (**C++ learning project**)
 
 ## Getting Started
 
@@ -21,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone repository
 
 ```
-git clone --recursive https://gitlab.com/carlosga/tvml.git
+git clone --recursive https://github.com/carlosga/tvml.git
 ```
 
 2. Install dependencies (packages names for Debian)
@@ -60,7 +58,7 @@ make test
 
 ## Authors
 
-* **Carlos Guzmán Álvarez** - *Initial work* - [carlosga](https://gitlab.com/carlosga)
+* **Carlos Guzmán Álvarez** - *Initial work* - [carlosga](https://github.com/carlosga)
 
 ## License
 
