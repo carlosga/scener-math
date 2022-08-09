@@ -4,7 +4,7 @@
 #ifndef SCENER_MATH_BASIC_MATRIX_HPP
 #define SCENER_MATH_BASIC_MATRIX_HPP
 
-#include <gsl/gsl_assert>
+#include <gsl/assert>
 
 #include "scener/math/basic_vector.hpp"
 
