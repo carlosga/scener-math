@@ -8,11 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-| Name                                     | Version |
-|------------------------------------------|---------|
-| [**CMake**](https://cmake.org/)          |         |
-| [**Clang**](http://clang.llvm.org/)      | 4.0     |
-| [**libC++**](http://libcxx.llvm.org/)    | 4.0     |
+
+| Name          | Version       |
+|---------------|---------------|
+| git           |               |
+| cmake         |               |
+| C++ compiler  | Clang / GCC   |
+| C compiler    | Clang / GCC   |
 
 ### Compile from Source
 
