@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone repository
 
 ```
-git clone --recursive https://github.com/carlosga/tvml.git
+git clone --recurse-submodules https://github.com/carlosga/tvml.git
 ```
 
 2. Install dependencies (packages names for Debian)
