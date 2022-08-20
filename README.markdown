@@ -25,7 +25,7 @@ git clone --recurse-submodules https://github.com/carlosga/tvml.git
 2. Install dependencies (packages names for Debian)
 
 ```
-sudo apt-get install cmake
+sudo apt-get install git cmake clang libc++ lldb
 ```
 
 3. Configure the build (DEBUG)
