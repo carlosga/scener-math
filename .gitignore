@@ -49,8 +49,5 @@ CMakeLists.txt.user
 # VS Code
 **/.browse.VCC.*
 
-# Generated files
-include/**
-
 # Visual Studio Code
 .vscode
