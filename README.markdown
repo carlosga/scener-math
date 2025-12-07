@@ -1,5 +1,8 @@
 # scener-math
 
+# !! This repository has moved !!
+# New location : https://codeberg.org/carlosga/scener-math
+
 [**scener**](http://github.com/carlosga/scener) math library (**C++ learning project**)
 
 ## Getting Started
